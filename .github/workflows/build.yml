@@ -1,24 +1,10 @@
-name: Build Node App
-
 on: push
-
 jobs:
-  build-node:
-    runs-on: ubuntu-latest
-    container: node:16
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Show Node.js version
-        run: node --version
-
-      - name: Show NPM version
-        run: npm --version
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run app.js
-        run: node app.js
+    build-node:
+        runs-on: ubuntu-latest
+        container: node:16
+        steps:
+            - run: node --version
+            - run: npm --version
+            - uses: actions/checkout@v3
+            - run: node app.js
