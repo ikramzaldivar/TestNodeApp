@@ -1,0 +1,19 @@
+on: push
+
+jobs:
+  run-mysql:
+    runs-on: ubuntu-latest
+    container: mysql:8.0
+
+    env:
+      MYSQL_ROOT_PASSWORD: root
+
+    steps:
+      - run: mysql --version
+
+      - run: |
+          echo "Esperando a que SQL arranque..."
+          sleep 20
+
+      - run: |
+          echo "SHOW DATABASES;" | mysql -uroot -proot
