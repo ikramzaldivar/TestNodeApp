@@ -6,6 +6,5 @@ jobs:
     container: python:3.11
 
     steps:
-      - run: echo "Contenedor de Python listo"
       - run: python --version
-      - run: python -c "print('Hola desde Python en un contenedor')"
+      - run: python -c "print('Hola crayola desde Python en un contenedor')"
