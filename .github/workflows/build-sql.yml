@@ -1,19 +1,17 @@
 on: push
 
 jobs:
-  run-mysql:
+  mysql-test:
     runs-on: ubuntu-latest
-    container: mysql:8.0
 
-    env:
-      MYSQL_ROOT_PASSWORD: root
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
 
     steps:
-      - run: mysql --version
-
       - run: |
-          echo "Esperando a que SQL arranque..."
-          sleep 20
-
-      - run: |
-          echo "SHOW DATABASES;" | mysql -uroot -proot
+          sudo apt-get update
+          sudo apt-get install -y mysql-client
+          echo "SHOW DATABASES;" | mysql -h127.0.0.1 -uroot -proot
