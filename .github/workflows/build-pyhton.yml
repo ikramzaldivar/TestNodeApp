@@ -1,0 +1,11 @@
+on: push
+
+jobs:
+  test-python:
+    runs-on: ubuntu-latest
+    container: python:3.11
+
+    steps:
+      - run: echo "Contenedor de Python listo"
+      - run: python --version
+      - run: python -c "print('Hola desde Python en un contenedor')"
